@@ -3,28 +3,34 @@
 const express = require('express');
 const errorHandler = require('./mw/errorHandler.js');
 const dateTime = require('./mw/requestTime.js');
+const logger = require('./mw/logger.js');
 const notFound = require('./mw/404.js');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/a', (req,res) => {
-  res.status(200).send('Route A');
+app.get('/a', dateTime, logger, (req, res, next) => {
+
+  // console.log(req.requestTime);
+
+  // res.status(200).send('Route A');
+  res.status(200).send(req.requestTime);
+  
 });
 
-app.get('/b', (req,res) => {
+app.get('/b', dateTime, logger, (req,res) => {
   res.status(200).send('Route B');
 });
 
-app.get('/c', (req,res) => {
+app.get('/c', dateTime, logger,(req,res) => {
   res.status(200).send('Route C');
 });
 
-app.get('/d', (req,res) => {
+app.get('/d', dateTime , logger, (req,res) => {
   res.status(200).send('Route D');
 });
 
-app.get('*', notFound, (req, res, next) => {
+app.get('*', notFound, logger, (req, res, next) => {
   console.log('catch all');
   // res.status(500)
   // next();
