@@ -9,6 +9,14 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+let math = (number) => {
+  return(req, res, next) => {
+    req.number = number**2;
+    next();
+  }
+}
+let squaredNumber = math(5);
+
 app.get('/a', dateTime, logger, (req, res, next) => {
 
   // console.log(req.requestTime);
@@ -17,8 +25,9 @@ app.get('/a', dateTime, logger, (req, res, next) => {
   
 });
 
-app.get('/b', dateTime, logger, (req, res, next) => {
-  res.status(200).send('Route B');
+
+app.get('/b', dateTime, logger, squaredNumber, (req, res, next) => {
+  res.status(200).send(`${req.number}`);
 });
 
 app.get('/c', dateTime, logger,(req, res, next) => {
