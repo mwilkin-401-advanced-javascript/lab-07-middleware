@@ -1,10 +1,11 @@
 # lab-07-middleware
-Middleware
 
-### Author: Matt Wilkin Felipe Delatorre
+
+### Author: Matt Wilkin, Felipe Delatorre
 
 ### Links and Resources
 [submission PR](https://github.com/mwilkin-401-advanced-javascript/lab-07-middleware/pull/2)
+
 [travis](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04)
 
 ### Setup
