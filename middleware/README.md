@@ -1,41 +1,28 @@
 # lab-07-middleware
 Middleware
 
-
-[![Build Status](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04.svg?branch=master)](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04)
-
 ### Author: Matt Wilkin Felipe Delatorre
 
 ### Links and Resources
 [submission PR](https://github.com/mwilkin-401-advanced-javascript/lab-07-middleware/pull/2)
-
 [travis](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04)
 
-### Documentation
-
-Dependencies
-jest
-lint
-
-Modules
-
-
-Exported Values and Methods
-
-
 ### Setup
+#### `.env` requirements
+* `PORT` - if none given the default is 3000
 
-Running the app
-npm start
+#### Running the app
+* `npm start` Starts server
+* Endpoint: `/a`
+  * Returns current time.
+* Endpoint: `/b`
+  * Returns a numbered squared.
+* Endpoint: `/c`
+  * Returns Route C.
+* Endpoint: `/d`
+  * Raises and error and points to 404.
+* Endpoint: `/any`
+  * A catch-all routes for unknown routes.
 
-### Tests
-How do you run tests?
-npm test
-
-What assertions were made?
-What assertions need to be / should be made?
-
-_________________
-_________________
-
-Project Guidelines
+#### UML
+![](./assets/UML.jpg)
