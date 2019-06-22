@@ -1,52 +1,37 @@
 'use strict';
 
 const express = require('express');
-const errorHandler = require('./mw/errorHandler.js');
-const dateTime = require('./mw/requestTime.js');
-const logger = require('./mw/logger.js');
-const notFound = require('./mw/404.js');
 const app = express();
+const unknown = require('./mw/404');
+const requestTime = require('./mw/time');
+const cD = require('./routes');
+const logger = require('./mw/logger');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
+
+app.use(cD);
 
 let math = (number) => {
   return(req, res, next) => {
     req.number = number**2;
     next();
-  }
-}
-let squaredNumber = math(5);
+  };
+};
 
-app.get('/a', dateTime, logger, (req, res, next) => {
+let squared = math(3);
 
-  // console.log(req.requestTime);
-  // res.status(200).send('Route A');
+
+app.get('/a', requestTime, (req,res) => {
   res.status(200).send(req.requestTime);
-  
 });
 
-
-app.get('/b', dateTime, logger, squaredNumber, (req, res, next) => {
+app.get('/b', logger, squared, (req, res, next) => {
   res.status(200).send(`${req.number}`);
 });
 
-app.get('/c', dateTime, logger,(req, res, next) => {
-  res.status(200).send('Route C');
-});
 
-app.get('/d', dateTime , logger, (req, res, next) => {
-  
-  next('Adam error');
+app.get('*', unknown, logger, (req, res) => {
+  console.log('Catch All');
 });
-
-app.get('*', notFound, logger, (req, res, next) => {
-  console.log('catch all');
-  // res.status(500)
-  // next();
-});
-
-app.use(notFound);
-app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-

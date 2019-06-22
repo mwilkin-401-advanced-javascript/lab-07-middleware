@@ -1,7 +1,6 @@
 # lab-07-middleware
 Middleware
-# project-scaffold
-Scaffold for lab projects for 401
+
 
 [![Build Status](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04.svg?branch=master)](https://www.travis-ci.com/mwilkin-401-advanced-javascript/lab-04)
 
